@@ -11,7 +11,7 @@ import { Main } from './handlebars/main';
 // to create standalone JS files for re-use. The current set up is NOT DRY.
 import { Dashboard } from './handlebars/dashboard';
 import { Homepage } from './handlebars/homepage';
-import { Jobsearch } from './handlebars/jobsearch';
+// import { Jobsearch } from './handlebars/jobsearch';
 import { WalkerDash } from './handlebars/walker-dashboard';
 
 // Signin function. Based on the App.jsx --> render() terenary operator this

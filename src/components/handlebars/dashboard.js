@@ -6,6 +6,8 @@ import Handlebars from 'handlebars';
 import { Petscard } from './partials/pets-card';
 import { Jobscard } from './partials/jobs-card';
 
+import { owener_fetch } from './fetch-test';
+
 // Set up the Owner Dashboard template
 const template = Handlebars.compile(`
     <div class="dashboard-container">
@@ -73,9 +75,10 @@ const template = Handlebars.compile(`
 
 // Export the Owner Dashboard using the template and the partials
 export const Dashboard = () => { 
+    owener_fetch(); // This is just for testing purposes, when logging in as an owner check the console log
     return (
         <div
-        dangerouslySetInnerHTML={{__html: template(Petscard, Jobscard)}}
+        dangerouslySetInnerHTML={{__html: template(Petscard,Jobscard)}}
       />
     );
 };
