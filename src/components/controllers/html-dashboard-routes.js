@@ -8,7 +8,8 @@ router.get("/", (req, res) => {
   Job.findAll({
     // order: [['timeframe', 'DESC']],
     where: {
-      owner_id: 1,
+      owner_id: "SP29AZWNBFXEHJGBQ2BMQ71W8R79DCA3NZQ7QJ367",
+      // completed: false,
     },
     include: [
       {
@@ -21,10 +22,26 @@ router.get("/", (req, res) => {
       },
     ],
   }).then((dbJobData) => {
-    const jobs = dbJobData.map((job) => job.get({ plain: true }));
-    res.render("dashboard", {
-      jobs,
-      // loggedIn: req.session.loggedIn,
+    const jobsClean = dbJobData.map((job) => job.get({ plain: true }));
+    let jobs = jobsClean.filter((job) => job.completed == false);
+
+    const completedJobsClean = dbJobData.map((job) => job.get({ plain: true }));
+    let completedJobs = completedJobsClean.filter(
+      (job) => job.completed == true
+    );
+
+    Pets.findAll({
+      where: {
+        owner_id: 1,
+      },
+    }).then((dbPetData) => {
+      const ownersPets = dbPetData.map((pets) => pets.get({ plain: true }));
+      // console.log(ownersPets);
+      res.render("dashboard", {
+        jobs,
+        ownersPets,
+        completedJobs,
+      });
     });
   });
 });
@@ -57,7 +74,7 @@ router.get("/walker", (req, res) => {
 });
 
 // Path to edit page where user can edit or delete a post
-router.get("/edit/:id", (req, res) => {
+router.get("/edit/:id", withAuth, (req, res) => {
   Post.findOne({
     where: {
       // use the ID from url parameters
@@ -105,9 +122,10 @@ router.get("/edit/:id", (req, res) => {
 });
 
 // Path to create a post HTML page
-// router.get("/create-post", (req, res) => {
-//   res.render("create-post", { loggedIn: true, username: req.session.username });
-//   return;
-// });
+router.get("/create-post", withAuth, (req, res) => {
+  res.render("create-post", { loggedIn: true, username: req.session.username });
+  return;
+});
 
 module.exports = router;
+
