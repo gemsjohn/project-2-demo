@@ -14,6 +14,24 @@ import { Homepage } from './handlebars/homepage';
 // import { Jobsearch } from './handlebars/jobsearch';
 import { WalkerDash } from './handlebars/walker-dashboard';
 
+import { owner_details, walker_details } from './handlebars/fetch';
+console.log('owner: ', owner_details().o_id);
+console.log('walker: ', walker_details().w_id);
+
+// import axios from 'axios';
+
+// let user_id;
+
+// async function myFunction() {
+//     const res = await axios.get(`http://localhost:3001/api/owners`);
+//     user_id = res.data[0].id;
+//     localStorage.setItem('user_id', user_id);
+// }
+// myFunction();
+// let new_user_id = localStorage.getItem('user_id');
+// console.log(new_user_id);
+
+
 // Signin function. Based on the App.jsx --> render() terenary operator this
 // is the truthy value and exports on the Homepage. Once the user is logged in, 
 // then Signout() exports.
@@ -55,9 +73,9 @@ export const Signout = () => {
       {/* [NEED]: We need to pass a variable through the following terenary operators to identify wether the user exists in either the Owner or Walker models. */}
       {/* The following terenary operators will execute in sequence. */}
       {/* If you find the key in the Owners Table then render the Owner Dashboard.  */}
-      {stxAddress === 'SP29AZWNBFXEHJGBQ2BMQ71W8R79DCA3NZQ7QJ367' ? <Dashboard /> : console.log("This account is not registered as an Owner.")}
+      {stxAddress === owner_details().o_id ? <Dashboard /> : console.log("This account is not registered as an Owner.")}
       {/* If you find the key in the Walker Table then render the Walker Dashboard.  */}
-      {stxAddress === 'SP206YJ9G14C3FD0JZE3C92KZ3V35JVNVW93Q0VKQ' ? <WalkerDash /> : console.log("This account is not registered as a Walker.")}
+      {stxAddress === walker_details().w_id ? <WalkerDash /> : console.log("This account is not registered as a Walker.")}
     </div>
     
   );

@@ -8,6 +8,8 @@ import { Jobscard } from './partials/jobs-card';
 import { Navblock } from './partials/nav-block';
 import { CreateJob } from './partials/modal/create-job';
 
+import axios from 'axios';
+
 // import { owner_fetch } from './fetch-test';
 
 // Set up the Owner Dashboard template
@@ -84,7 +86,7 @@ const template = Handlebars.compile(`
 `);
 
 // Export the Owner Dashboard using the template and the partials
-export const Dashboard = () => { 
+export const Dashboard = () => {  
     return (
         <div
         dangerouslySetInnerHTML={{__html: template(Navblock, Petscard, Jobscard, CreateJob)}}
