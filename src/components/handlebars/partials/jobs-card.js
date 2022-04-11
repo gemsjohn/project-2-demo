@@ -1,24 +1,6 @@
 // Primary dependencies
 import React from "react";
 import Handlebars from 'handlebars';
-// import axios from 'axios';
-
-// // import owner_fetch from '../fetch-test';
-
-// let ownerName;
-
-
-// async function myFunction() {
-//     const res = await axios.get(`http://localhost:3001/api/owners`);
-//     ownerName = res.data[0].id;
-//     localStorage.setItem('ownerName', ownerName);
-// }
-// myFunction();
-// const test = localStorage.getItem('ownerName');
-// console.log(test);
-
-import { owner_details } from "../fetch";
-// console.log(owner_details().id);
 
 // Set up the Job Card template
 const template = Handlebars.registerPartial(

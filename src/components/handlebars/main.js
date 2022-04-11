@@ -2,8 +2,6 @@
 import React from "react";
 import Handlebars from "handlebars";
 
-import { Homepage } from "./homepage";
-
 // Set up the Main HTML template
 const template = Handlebars.compile(`
     <!DOCTYPE html>
