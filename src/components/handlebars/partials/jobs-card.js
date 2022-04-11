@@ -17,16 +17,30 @@ const pullJobs = () => {
 {!userSession.isUserSignedIn() ? console.log("NOT SIGNED INNNN") : pullJobs()}
 
 // Set up the Job Card template
+// const template = Handlebars.registerPartial(
+//     'jobs-card',
+//         `<div class="card mb-2">
+//             <div class="card-body">
+//                 <h4 class="card-title">${pullJobs().j_owner_first_name} ${pullJobs().j_owner_last_name}</h5>
+//                 <h5 class="card-text">Pet: ${pullJobs().j_pet_name}</h5>
+//                 <h5 class="card-subtitle">Visit: {{#if walk }}Walk{{/if}}{{#if check_in }}Check-In{{/if}}</h6>
+//                 <h5 class="card-text">Pay: ${pullJobs().j_pay}</h5>
+//                 <h6 class="card-text text-muted">Time: ${pullJobs().j_timefrime}</h6>
+//                 <h6 class="card-text text-muted">Location: ${pullJobs().j_location}</h6>
+//             </div>
+//         </div>`
+// );
+
 const template = Handlebars.registerPartial(
     'jobs-card',
         `<div class="card mb-2">
             <div class="card-body">
-                <h4 class="card-title">${pullJobs().j_owner_first_name} ${pullJobs().j_owner_last_name}</h5>
-                <h5 class="card-text">Pet: ${pullJobs().j_pet_name}</h5>
+                <h4 class="card-title">Placeholder Name</h5>
+                <h5 class="card-text">Pet: Placeholder Pet Name</h5>
                 <h5 class="card-subtitle">Visit: {{#if walk }}Walk{{/if}}{{#if check_in }}Check-In{{/if}}</h6>
-                <h5 class="card-text">Pay: ${pullJobs().j_pay}</h5>
-                <h6 class="card-text text-muted">Time: ${pullJobs().j_timefrime}</h6>
-                <h6 class="card-text text-muted">Location: ${pullJobs().j_location}</h6>
+                <h5 class="card-text">Pay: Placeholder Pay</h5>
+                <h6 class="card-text text-muted">Time: Placeholder Time</h6>
+                <h6 class="card-text text-muted">Location: Placeholder location</h6>
             </div>
         </div>`
 );
