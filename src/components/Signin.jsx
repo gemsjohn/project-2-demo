@@ -1,6 +1,6 @@
 import React from 'react';
 import { authenticate, disconnect } from '../auth';
-import { Text } from '@blockstack/ui';
+// import { Text } from '@blockstack/ui';
 import { getUserData } from '../auth';
 
 // Main handlebars HTML template. This is a necessity and it handles page formatting. 
@@ -54,7 +54,7 @@ export const Signout = () => {
         <div className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
           <a className="navbar-brand" href="/">Scout</a>
           <ul className="nav navbar-nav ml-auto"></ul>
-          <Text margin="10px" color= "#55C35E" fontWeight="500">{shortenedStxAddress} </Text>
+          <h6 className="address-color">{shortenedStxAddress} </h6>
           <button type="button" className="btn success" onClick={() => disconnect()}>Logout</button>
         </div>
       </div>
