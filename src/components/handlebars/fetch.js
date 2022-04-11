@@ -69,3 +69,85 @@ export const walker_details = (stxAddress) => {
         w_email: w_local_email,
     }
 }
+export const job_details = (stxAddress) => {
+    let j_id;
+    let j_pay;
+    let j_check_in;
+    let j_walk;
+    let j_timeframe;
+    let j_location;
+    let j_completed;
+    let j_owner_id;
+    let j_walker_id;
+    let j_animal_id;
+    let j_pet_name;
+    let j_owner_first_name;
+    let j_owner_last_name;
+
+    async function myFunction() {
+        const res = await axios.get(`https://pacific-depths-79804.herokuapp.com/api/jobs`);
+        // may need a for loop here to cycle through the data
+        for (let i = 0; i < res.data.length; i++) {
+            if (JSON.stringify(res.data[i].owner_id) === stxAddress) {
+                console.log("JOB #: ", i)
+                j_id = res.data[i].id;
+                j_pay = res.data[i].pay;
+                j_check_in = res.data[i].check_in;
+                j_walk = res.data[i].walk;
+                j_timeframe = res.data[i].timeframe;
+                j_location = res.data[i].location;
+                j_completed = res.data[i].completed;
+                j_owner_id = res.data[i].owner_id;
+                j_walker_id = res.data[i].walker_id;
+                j_animal_id = res.data[i].animal_id;
+                j_pet_name = res.data[i].pet.pet_name;
+                j_owner_first_name = res.data[i].owner.first_name;
+                j_owner_last_name = res.data[i].owner.last_name;
+
+                localStorage.setItem('j_id', j_id);
+                localStorage.setItem('j_pay', j_pay);
+                localStorage.setItem('j_check_in', j_check_in);
+                localStorage.setItem('j_walk', j_walk);
+                localStorage.setItem('j_timeframe', j_timeframe);
+                localStorage.setItem('j_location',  j_location);
+                localStorage.setItem('j_completed', j_completed);
+                localStorage.setItem('j_owner_id', j_owner_id);
+                localStorage.setItem('j_walker_id', j_walker_id);
+                localStorage.setItem('j_animal_id', j_animal_id);
+                localStorage.setItem('j_pet_name', j_pet_name);
+                localStorage.setItem('j_owner_first_name', j_owner_first_name);
+                localStorage.setItem('j_owner_last_name', j_owner_last_name);
+            }
+        }
+    }
+    myFunction();
+    let j_local_id = localStorage.getItem('j_id');
+    let j_local_pay = localStorage.getItem('j_pay');
+    let j_local_check_in = localStorage.getItem('j_check_in');
+    let j_local_walk = localStorage.getItem('j_walk');
+    let j_local_timeframe = localStorage.getItem('j_timeframe');
+    let j_local_location = localStorage.getItem('j_location');
+    let j_local_completed = localStorage.getItem('j_completed');
+    let j_local_owner_id = localStorage.getItem('j_owner_id');
+    let j_local_walker_id = localStorage.getItem('j_walker_id');
+    let j_local_animal_id = localStorage.getItem('j_animal_id');
+    let j_local_pet_name = localStorage.getItem('j_pet_name');
+    let j_local_owner_first_name = localStorage.getItem('j_owner_first_name');
+    let j_local_owner_last_name = localStorage.getItem('j_owner_last_name');
+
+    return {
+        j_id: j_local_id,
+        j_pay: j_local_pay,
+        j_check_in: j_local_check_in,
+        j_walk: j_local_walk,
+        j_timefrime: j_local_timeframe,
+        j_location: j_local_location,
+        j_completed: j_local_completed,
+        j_owner_id: j_local_owner_id,
+        j_walker_id: j_local_walker_id,
+        j_animal_id: j_local_animal_id,
+        j_pet_name: j_local_pet_name,
+        j_owner_first_name: j_local_owner_first_name,
+        j_owner_last_name: j_local_owner_last_name,
+    }
+}
