@@ -1,8 +1,9 @@
+// Primary dependencies
 import React, { Component } from 'react';
 import { Signin, Signout } from './Signin';
 import { userSession } from '../auth';
 
-
+// Export the 'App' class to /src/index.js
 export default class App extends Component {
   state = {
     userData: null,
@@ -23,23 +24,9 @@ export default class App extends Component {
     } else if (userSession.isUserSignedIn()) {
       this.setState({ userData: userSession.loadUserData() });
     }
-    // Calling Express backend server from React
-    // this.callBackendAPI()
-    //   .then(res => this.setState({ data: res.express }))
-    //   .catch(err => console.log(err));
   }
 
-  // fetching the GET route from the Express server which matches the GET route from server.js
-  // callBackendAPI = async () => {
-  //   const response = await fetch('/express_backend');
-  //   const body = await response.json();
-
-  //   if (response.status !== 200) {
-  //     throw Error(body.message) 
-  //   }
-  //   return body;
-  // };
-
+  // Render the Login or Logout button depending on the user session i.e. is the user signed in or not?
   render() {
     return (
       <div>

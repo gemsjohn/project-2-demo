@@ -34,6 +34,7 @@ const template = Handlebars.compile(`
 
 // Export the Main HTML using the template and the partials
 export const Main = () => {
+    // Const data is not in use, it is just here as an example
     const data = {
         body: ""
     };

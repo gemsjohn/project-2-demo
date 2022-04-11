@@ -1,14 +1,23 @@
+// Primary dependency
 import axios from 'axios';
+
+// Export owner details: id, first_name, last_name, and email
 export const owner_details = (stxAddress) => {
     let o_user_id;
     let o_first_name;
     let o_last_name;
     let o_email;
 
+    // Read data from the Heroku DB /ap/owners
     async function myFunction() {
         const res = await axios.get(`https://pacific-depths-79804.herokuapp.com/api/owners`);
-        // may need a for loop here to cycle through the data
+          //   const body = await res.json(); // NOTE TO SELF: could this be used?
+
+        // Loop through all of the data
         for (let i = 0; i < res.data.length; i++) {
+
+            // If an owner_id matches the stxAddress that you attempted to log in with then store the OWNER data locally.
+            // This data was stored locally so that it could be pulled out of the async function.
             if (JSON.stringify(res.data[i].id) === stxAddress) {
                 o_user_id = res.data[i].id;
                 o_first_name = res.data[i].first_name;
@@ -21,12 +30,16 @@ export const owner_details = (stxAddress) => {
             }
         }
     }
+    // [NEED]Catch error?
+
+    // Call the async function and grab the data
     myFunction();
     let o_local_user_id = localStorage.getItem('o_user_id');
     let o_local_first_name = localStorage.getItem('o_first_name');
     let o_local_last_name = localStorage.getItem('o_last_name');
     let o_local_email = localStorage.getItem('o_email');
 
+    // Return the data
     return {
         o_id: o_local_user_id,
         o_first_name: o_local_first_name,
@@ -34,6 +47,7 @@ export const owner_details = (stxAddress) => {
         o_email: o_local_email,
     }
 }
+
 export const walker_details = (stxAddress) => {
     let w_user_id;
     let w_first_name;
@@ -42,8 +56,9 @@ export const walker_details = (stxAddress) => {
 
     async function myFunction() {
         const res = await axios.get(`https://pacific-depths-79804.herokuapp.com/api/walkers`);
-        // may need a for loop here to cycle through the data
+        // Loop through the Walkers DB
         for (let i = 0; i < res.data.length; i++) {
+            // If a walker_id matches the stxAddress then store that WALKER data locally
             if (JSON.stringify(res.data[i].id) === stxAddress) {
                 w_user_id = res.data[i].id;
                 w_first_name = res.data[i].first_name;
@@ -86,8 +101,9 @@ export const job_details = (stxAddress) => {
 
     async function myFunction() {
         const res = await axios.get(`https://pacific-depths-79804.herokuapp.com/api/jobs`);
-        // may need a for loop here to cycle through the data
+        // Loop through the Jobs DB
         for (let i = 0; i < res.data.length; i++) {
+            // If an owner_id matches the stxAddress then store that JOB data locally
             if (JSON.stringify(res.data[i].owner_id) === stxAddress) {
                 console.log("JOB #: ", i)
                 j_id = res.data[i].id;

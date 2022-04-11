@@ -1,6 +1,7 @@
 // Primary dependencies
 import React from 'react';
 
+// Set up the Homepage template
 export const Homepage = () => {
     const data = `
         {{> nav-block}}
@@ -72,6 +73,8 @@ export const Homepage = () => {
         <script src ="javascript/create-account.js"></script>
         <script src ="javascript/create-owner.js"></script>
     `;
+
+    // Return the Homepage template
     return (
       <div
         dangerouslySetInnerHTML={{__html: data}}

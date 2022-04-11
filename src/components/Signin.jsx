@@ -32,6 +32,7 @@ export const Signin = () => {
           <button type="button" className="btn success" onClick={() => authenticate()}>Login</button>
         </div>
       </div>
+      {/* Render Main handlebars HTML and Homepage handlebars HTML pages. */}
       <Main />
       <Homepage />
     </div>
@@ -57,8 +58,8 @@ export const Signout = () => {
           <button type="button" className="btn success" onClick={() => disconnect()}>Logout</button>
         </div>
       </div>
+      {/* Render the Main handlebars HTML page. */}
       <Main /> 
-      {/* [NEED]: We need to pass a variable through the following terenary operators to identify wether the user exists in either the Owner or Walker models. */}
       {/* The following terenary operators will execute in sequence. */}
       {/* If you find the key in the Owners Table then render the Owner Dashboard.  */}
       {stxAddress === owner_details(str_stxAddress).o_id ? <Dashboard /> : console.log("This account is not registered as an Owner.")}

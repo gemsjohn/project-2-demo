@@ -4,9 +4,8 @@ import Handlebars from 'handlebars';
 import { getUserData, userSession } from '../../../auth';
 import { job_details } from '../fetch';
 
-
-
-
+// Pull jobs based on the users stxAddress. This function reviews the /api/jobs DB and searches
+// for an owner_id that equals the users stxAddress (the unique id that corresponds to their Hiro Web Wallet account)
 const pullJobs = () => {
     const stxAddress = getUserData().profile.stxAddress.mainnet;
     const str_stxAddress = JSON.stringify(stxAddress);
@@ -14,7 +13,10 @@ const pullJobs = () => {
     return job_details(str_stxAddress);
 }
 
-{!userSession.isUserSignedIn() ? console.log("NOT SIGNED INNNN") : pullJobs()}
+// Terenary operator: {condition ? expression if TRUE : expression if FALSE}
+// If the user IS NOT signed in then console log "NOT SIGNED IN!"
+// If the user IS signed in then run the pullJobs() function
+{!userSession.isUserSignedIn() ? console.log("NOT SIGNED IN!!!!") : pullJobs()}
 
 // Set up the Job Card template
 // const template = Handlebars.registerPartial(
