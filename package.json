@@ -1,10 +1,6 @@
 {
-  "name": "client",
-  "description": "Stacks Connect Wallet",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/blockstack/todos"
-  },
+  "name": "walks-oflove",
+  "homepage": "https://www.walksoflove.biz/",
   "version": "0.2.0",
   "private": true,
   "dependencies": {
@@ -38,6 +34,8 @@
   "prettier": "@blockstack/prettier-config",
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
