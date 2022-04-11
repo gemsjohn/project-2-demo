@@ -58,6 +58,8 @@ export const Signin = () => {
 export const Signout = () => {
   console.log("Sign out");
   const stxAddress = getUserData().profile.stxAddress.mainnet;
+  const str_stxAddress = JSON.stringify(stxAddress);
+  console.log(str_stxAddress);
   const shortenedStxAddress = stxAddress.substr(0, 4) + "...." + stxAddress.substr(stxAddress.length-4, stxAddress.length);
   return (
     <div>
@@ -73,9 +75,9 @@ export const Signout = () => {
       {/* [NEED]: We need to pass a variable through the following terenary operators to identify wether the user exists in either the Owner or Walker models. */}
       {/* The following terenary operators will execute in sequence. */}
       {/* If you find the key in the Owners Table then render the Owner Dashboard.  */}
-      {stxAddress === owner_details().o_id ? <Dashboard /> : console.log("This account is not registered as an Owner.")}
+      {stxAddress === owner_details(str_stxAddress).o_id ? <Dashboard /> : console.log("This account is not registered as an Owner.")}
       {/* If you find the key in the Walker Table then render the Walker Dashboard.  */}
-      {stxAddress === walker_details().w_id ? <WalkerDash /> : console.log("This account is not registered as a Walker.")}
+      {stxAddress === walker_details(str_stxAddress).w_id ? <WalkerDash /> : console.log("This account is not registered as a Walker.")}
     </div>
     
   );
